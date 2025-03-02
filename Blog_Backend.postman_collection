@@ -1,0 +1,825 @@
+{
+	"info": {
+		"_postman_id": "1baa8410-56f9-44a5-9e3c-f7a64b6e024e",
+		"name": "Blog Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "40427526"
+	},
+	"item": [
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "List Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts?onlyDeleted=true",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "published",
+									"disabled": true
+								},
+								{
+									"key": "showDeleted",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "onlyDeleted",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show Post",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/posts/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"posts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "224"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e0-Grh+C6EzMsE3N2z6ds1C6eJGeyE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Mar 2025 12:00:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"category_id\": 1,\n    \"title\": \"Javascript bir programlama dilidir\",\n    \"content\": \"Javascript web ekosisteminde kullanılan çok yönlü bir dildir\",\n    \"created_at\": \"2025-03-02T11:58:56.908Z\",\n    \"published_at\": null,\n    \"deleted_at\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Javascript bir programlama dilidir\",\r\n    \"content\": \"Javascript web ekosisteminde kullanılan çok yönlü bir dildir\",\r\n    \"category_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/posts"
+					},
+					"response": [
+						{
+							"name": "Create Post",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Javascript bir programlama dilidir\",\r\n    \"content\": \"Javascript web ekosisteminde kullanılan çok yönlü bir dildir\",\r\n    \"category_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/posts"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "226"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e2-pyVCbAOVyA19vNPwY9o6VDmVEJs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Mar 2025 11:58:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"category_id\": 1,\n        \"title\": \"Javascript bir programlama dilidir\",\n        \"content\": \"Javascript web ekosisteminde kullanılan çok yönlü bir dildir\",\n        \"created_at\": \"2025-03-02T11:58:56.908Z\",\n        \"published_at\": null,\n        \"deleted_at\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"C# Programlama dili Nedir\",\r\n    \"content\": \"Microsoft tarafından geliştirilen yazılım dilidir\",\r\n    \"category_id\":7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/posts/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "List Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories?onlyDeleted=true",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "showDeleted",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "onlyDeleted",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/categories"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "513"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"201-B/dCUJRUMBV91JNu4T+H4ntIKFE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Mar 2025 11:19:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Frontend\",\n        \"created_at\": \"2025-03-02T11:18:28.454Z\",\n        \"deleted_at\": null\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Backend\",\n        \"created_at\": \"2025-03-02T11:18:45.538Z\",\n        \"deleted_at\": null\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Mobile\",\n        \"created_at\": \"2025-03-02T11:18:51.752Z\",\n        \"deleted_at\": null\n    },\n    {\n        \"id\": 4,\n        \"name\": \"FullStack\",\n        \"created_at\": \"2025-03-02T11:18:57.094Z\",\n        \"deleted_at\": null\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Devops\",\n        \"created_at\": \"2025-03-02T11:19:01.478Z\",\n        \"deleted_at\": null\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Cyber Security\",\n        \"created_at\": \"2025-03-02T11:19:09.896Z\",\n        \"deleted_at\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Show Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show Category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/categories/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"categories",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-KfWbkuGLrIuoFL+Sj77iOI8qORs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Mar 2025 11:19:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"name\": \"FullStack\",\n    \"created_at\": \"2025-03-02T11:18:57.094Z\",\n    \"deleted_at\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Software\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Network Systems\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/categories/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/categories/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "List Comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comments?commenter_name={{commenter_name}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments"
+							],
+							"query": [
+								{
+									"key": "post_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "commenter_name",
+									"value": "{{commenter_name}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Comments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/comments"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "418"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a2-Feqj5ne+YhKM+SRUMlO34WPsXwI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Mar 2025 12:21:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"post_id\": 2,\n        \"content\": \"Javascript bence çok güzel bir dil\",\n        \"commenter_name\": \"Ahmet Mehmetoglu\",\n        \"created_at\": \"2025-03-02T12:20:20.117Z\"\n    },\n    {\n        \"id\": 3,\n        \"post_id\": 2,\n        \"content\": \"Javascript bence iyi bir dil degil\",\n        \"commenter_name\": \"Osman Osmanoglu\",\n        \"created_at\": \"2025-03-02T12:20:46.400Z\"\n    },\n    {\n        \"id\": 4,\n        \"post_id\": 2,\n        \"content\": \"C# daha iyi bence\",\n        \"commenter_name\": \"Mehmet Mehmetoglu\",\n        \"created_at\": \"2025-03-02T12:21:19.865Z\"\n    }\n]"
+						},
+						{
+							"name": "List Comments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/comments?commenter_name={{commenter_name}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"comments"
+									],
+									"query": [
+										{
+											"key": "post_id",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "commenter_name",
+											"value": "{{commenter_name}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "129"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"81-19aTz5LTAqz/AhiGf0mZmQTauXw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Mar 2025 13:09:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 4,\n        \"post_id\": 2,\n        \"content\": \"C# daha iyi bence\",\n        \"commenter_name\": \"Mehmet Mehmetoglu\",\n        \"created_at\": \"2025-03-02T12:21:19.865Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Show Comment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comments/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show Comment",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/comments/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"comments",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "145"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"91-6ekUwyP2T2/ysbOkRrsP0P+2/l4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Mar 2025 12:21:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"post_id\": 2,\n    \"content\": \"Javascript bence çok güzel bir dil\",\n    \"commenter_name\": \"Ahmet Mehmetoglu\",\n    \"created_at\": \"2025-03-02T12:20:20.117Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post_id\": 2,\r\n    \"content\": \"C# daha iyi bence\",\r\n    \"commenter_name\": \"Mehmet Mehmetoglu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/comments"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Comment",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post_id\": 2,\r\n    \"content\": \"Javascript bence çok güzel bir yazılım dili\",\r\n    \"commenter_name\": \"Ahmet Mehmetoglu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/comments/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comments/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "commenter_name",
+			"value": "Osman Osmanoglu",
+			"type": "string"
+		}
+	]
+}
