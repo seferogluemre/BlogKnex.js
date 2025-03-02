@@ -10,4 +10,4 @@ router.patch('/:id', editCategory)
 router.delete('/:id', removeCategory)
 
 
-export default router;
+export default router;  
