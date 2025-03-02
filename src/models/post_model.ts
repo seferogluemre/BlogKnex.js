@@ -44,7 +44,6 @@ export const getAllPosts = async (query: QueryProps) => {
     }
 
     return queryBuilder;
-
 }
 
 export const getPostById = (id: number) => {
