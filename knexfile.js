@@ -1,9 +1,3 @@
-// Update with your config settings.
-
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
-
 import dotenv from 'dotenv'
 
 dotenv.config();
@@ -11,7 +5,7 @@ dotenv.config();
 export default {
 
   development: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       database: process.env.DB_NAME,
       user: process.env.DB_USER,
