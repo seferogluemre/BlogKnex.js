@@ -6,14 +6,23 @@ export interface CommentBody {
     commenter_name: string,
 }
 
+interface QueryProps {
+    post?: number;
+    commenter_name?: string
+}
+
 const tableName: string = "comments"
 
-export const getAllComments = (query) => {
+export const getAllComments = (query: QueryProps) => {
     let queryBuilder = db(tableName);
 
-    
+    if (query.post) {
+        queryBuilder = queryBuilder.where('post_id', query.post)
+    }
 
-
+    if (query.commenter_name) {
+        queryBuilder = queryBuilder.where('commenter_name', 'like', `%${query.commenter_name}%`);
+    }
 
     return queryBuilder
 }
