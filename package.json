@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "start": "pnpm tsx ./src/main.ts",
+    "dev": "pnpm tsx watch ./src/app.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "knex": "^3.1.0",
+    "pg": "^8.13.3",
+    "tsx": "^4.19.3"
+  }
+}
