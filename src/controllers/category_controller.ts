@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { CategoryBody, createCategory, deleteCategory, getAllCategories, getCategoryById, updateCategory } from "src/models/category_model";
+import { CategoryBody, createCategory, deleteCategory, getAllCategories, getCategoryById, QueryProps, updateCategory } from "src/models/category_model";
 
-export const listCategories = async (req: Request, res: Response) => {
+export const listCategories = async (req: Request<{}, {}, {}, QueryProps>, res: Response) => {
     try {
-        const categories = await getAllCategories();
+        const categories = await getAllCategories(req.query);
         res.status(200).json(categories)
     } catch (error) {
         res.status(404).json({ message: (error as Error).message })
