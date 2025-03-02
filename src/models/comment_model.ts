@@ -5,10 +5,17 @@ export interface CommentBody {
     content: string;
     commenter_name: string,
 }
+
 const tableName: string = "comments"
 
-export const getAllComments = () => {
-    return db(tableName);
+export const getAllComments = (query) => {
+    let queryBuilder = db(tableName);
+
+    
+
+
+
+    return queryBuilder
 }
 
 export const getCommentById = (id: number) => {

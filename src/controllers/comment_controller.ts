@@ -3,7 +3,7 @@ import { createComment, deleteComment, getAllComments, getCommentById, updateCom
 
 export const listComments = async (req: Request, res: Response) => {
     try {
-        const comments = await getAllComments();
+        const comments = await getAllComments(req.query);
         res.status(200).json(comments)
     } catch (error) {
         res.status(404).json({ message: (error as Error).message })

@@ -3,7 +3,7 @@ import { createPost, deletePost, getAllPosts, getPostById, PostBody, updatePost 
 
 export const listPosts = async (req: Request, res: Response) => {
     try {
-        const posts = await getAllPosts();
+        const posts = await getAllPosts(req.query);
         res.status(200).json(posts)
     } catch (error) {
         res.status(404).json({ message: (error as Error).message })

@@ -6,10 +6,45 @@ export interface PostBody {
     category_id: number;
 }
 
+interface QueryProps {
+    category?: string;
+    status?: string;
+    draft?: string;
+    all?: string;
+    showDeleted?: string;
+    onlyDeleted?: string;
+}
+
 const tableName: string = "posts";
 
-export const getAllPosts = () => {
-    return db(tableName).whereNull('deleted_at');
+export const getAllPosts = async (query: QueryProps) => {
+    let queryBuilder = db(tableName)
+
+    if (query.category) {
+        queryBuilder = queryBuilder.where('category_id', query.category);
+    }
+
+    if (query.status == "published") {
+        queryBuilder = queryBuilder.whereNotNull('published_at')
+    }
+    else if (query.draft == "true") {
+        queryBuilder = queryBuilder.whereNull('published_at')
+    }
+    else if (query.all == "true") {
+        queryBuilder = queryBuilder;
+    }
+
+    // Deleted filtreleri
+    if (query.showDeleted === 'true') {
+        queryBuilder = queryBuilder;
+    } else if (query.onlyDeleted === 'true') {
+        queryBuilder = queryBuilder.whereNotNull('deleted_at');
+    } else {
+        queryBuilder = queryBuilder.whereNull('deleted_at');
+    }
+
+    return queryBuilder;
+
 }
 
 export const getPostById = (id: number) => {
