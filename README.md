@@ -1,1 +1,1 @@
-TypeScript-based Express. The project follows the MVC architecture and utilizes PostgreSQL as the database, with Knex.js as the query builder. It includes essential blog functionalities such as creating, reading, updating, and deleting posts, ensuring a structured and scalable backend
+TypeScript-based Express. The project follows the MVC architecture and utilizes PostgreSQL as the database, with Knex.js as the query builder. It includes essential blog functionalities such as creating, reading, updating, and deleting posts, ensuring a structured and scalable backend.
